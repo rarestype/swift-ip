@@ -25,25 +25,15 @@ jobs:
             -   name: 💝 Checkout repository 💝
                 uses: actions/checkout@v6
 
-            -   name: 💝 Download prefabricator 💝
-                env:
-                    MIRROR: "https://download.rarestype.com/swift-ip"
-                    GH_TOKEN: ${{ github.token }}
-                run: |
-                    LATEST=$(
-                        gh api "repos/${GITHUB_REPOSITORY}/tags" --paginate --jq '.[].name' \
-                        | grep -E '^[0-9]+\.[0-9]+\.[0-9]+' \
-                        | sort -rV | head -n 1 \
-                    )
-                    curl \
-                        -sSfL "${MIRROR}/${LATEST}/Linux-$(uname -m)/prefabricator.gz" \
-                        -o prefabricator
-                    chmod +x prefabricator
+            -   name: 💝 Install blocklist prefabricator 💝
+                uses: rarestype/r2-install-action@master
+                with:
+                    archive: prefabricator.tar.gz
 
             -   name: 💝 Build blocklist image 💝
+                run: Scripts/Update
                 env:
                     IPINFO_TOKEN: ${{ secrets.IPINFO_TOKEN }}
-                run: Scripts/Update prefabricator
 
             -   name: 💝 Upload blocklist image 💝
                 run: |
