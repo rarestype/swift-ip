@@ -39,8 +39,13 @@ else
     echo "Using existing github.json"
 fi
 
+prefabricator=$(command -v swift-ip-prefabricator || realpath "${1:-}")
+if [ ! -f "$prefabricator" ]; then
+    echo "error: swift-ip-prefabricator tool not found"
+    exit 1
+fi
 
-"$(realpath $1)" \
+"$prefabricator" \
     --country country.json \
     --asn asn.json \
     --googlebot googlebot.json \
