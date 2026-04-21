@@ -29,7 +29,7 @@ jobs:
         name: ${{ matrix.runner.name }}
         steps:
             -   name: 💝 Setup R2 💝
-                uses: rarestype/r2-setup-action@master
+                uses: rarestype/r2-setup-action@v1
                 with:
                     cloudflare-account-id: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
                     r2-access-key-id: ${{ secrets.R2_ACCESS_KEY }}
@@ -60,7 +60,7 @@ jobs:
                 run: swift run -c release FirewallUsage 98.223.208.128
 
             -   name: 💝 Deploy prefabricator 💝
-                uses: rarestype/r2-release-action@master
+                uses: rarestype/r2-release-action@v1
                 with:
                     include: swift-ip-prefabricator
                     version: ${{ inputs.version }}
