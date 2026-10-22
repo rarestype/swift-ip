@@ -48,7 +48,6 @@ jobs:
                     swift build -c release \
                         --explicit-target-dependency-import-check=error \
                         --static-swift-stdlib \
-                        -Xswiftc -static-stdlib \
                         --product swift-ip-prefabricator
                     cp .build/release/swift-ip-prefabricator .
 
