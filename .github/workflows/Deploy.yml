@@ -20,13 +20,13 @@ jobs:
     Linux:
         strategy:
             matrix:
-                runner:
+                platform:
                     -   name: "Ubuntu (aarch64)"
                         arch: aarch64
-                        id: ubuntu-24.04-arm
+                        runs-on: ubuntu-24.04-arm
 
-        runs-on: ${{ matrix.runner.id }}
-        name: ${{ matrix.runner.name }}
+        runs-on: ${{ matrix.platform['runs-on'] }}
+        name: ${{ matrix.platform.name }}
         steps:
             -   name: 💝 Setup R2 💝
                 uses: rarestype/r2-setup-action@v1
@@ -41,13 +41,14 @@ jobs:
             -   name: 💝 Install Swift 💝
                 uses: rarestype/swift-install-action@v1
                 with:
-                    swift-release: 6.3.3-RELEASE
+                    swift-release: 6.4.1-RELEASE
 
             -   name: 💝 Build prefabricator 💝
                 run: |
                     swift build -c release \
                         --explicit-target-dependency-import-check=error \
                         --static-swift-stdlib \
+                        -Xswiftc -static-stdlib \
                         --product swift-ip-prefabricator
                     cp .build/release/swift-ip-prefabricator .
 
@@ -71,5 +72,5 @@ jobs:
                 uses: rarestype/rarestbadge@v1
                 if: always()
                 with:
-                    badge: SemanticRelease/${{ github.job }}-${{ matrix.runner.arch }}
+                    badge: SemanticRelease/${{ github.job }}-${{ matrix.platform.arch }}
                     title: Release
