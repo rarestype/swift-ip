@@ -1,3 +1,6 @@
+#if canImport(SwiftGlibc)
+import SwiftGlibc
+#endif
 #if canImport(Darwin)
 import CNIODarwin
 #else
