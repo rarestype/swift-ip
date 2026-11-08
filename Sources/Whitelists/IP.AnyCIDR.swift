@@ -28,5 +28,4 @@ extension IP.AnyCIDR: LosslessStringConvertible {
         }
     }
 }
-extension IP.AnyCIDR: JSONStringDecodable, JSONStringEncodable {
-}
+extension IP.AnyCIDR: JSONStringDecodable, JSONStringEncodable {}

@@ -27,8 +27,7 @@ extension IP {
         }
     }
 }
-extension IP.Table: Sendable where Color: Sendable {
-}
+extension IP.Table: Sendable where Color: Sendable {}
 extension IP.Table {
     /// Performs a bisection search to look up the color associated with the given IP address,
     /// using the IPv4 subtable only.

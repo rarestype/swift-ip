@@ -40,14 +40,18 @@ if  let country: ISO.Country {
 let (system, claimant): (IP.AS?, IP.Claimant?) = firewall.lookup(v6: ip)
 //  snippet.end
 if  let system: IP.AS {
-    print("""
+    print(
+        """
         ASN: \(system.number)
         AS: \(system.domain) (\(system.name))
-        """)
+        """
+    )
 }
 
 if  let claimant: IP.Claimant {
-    print("""
+    print(
+        """
         Claimant: \(claimant)
-        """)
+        """
+    )
 }

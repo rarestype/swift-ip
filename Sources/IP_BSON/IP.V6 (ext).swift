@@ -22,5 +22,4 @@ extension IP.V6: BSONBinaryDecodable {
     }
 }
 
-extension IP.V6: BSON.BinaryPackable {
-}
+extension IP.V6: BSON.BinaryPackable {}

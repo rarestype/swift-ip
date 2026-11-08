@@ -33,5 +33,4 @@ extension IPinfo.ASN: LosslessStringConvertible {
         self.init(parsed: parsed)
     }
 }
-extension IPinfo.ASN: JSONStringDecodable, JSONStringEncodable {
-}
+extension IPinfo.ASN: JSONStringDecodable, JSONStringEncodable {}
