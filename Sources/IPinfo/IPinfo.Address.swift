@@ -22,5 +22,4 @@ extension IPinfo.Address: LosslessStringConvertible {
         }
     }
 }
-extension IPinfo.Address: JSONStringDecodable, JSONStringEncodable {
-}
+extension IPinfo.Address: JSONStringDecodable, JSONStringEncodable {}

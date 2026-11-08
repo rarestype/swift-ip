@@ -45,8 +45,7 @@ extension IP.Table.SortedArray where Bound: Sendable {
         self.init(unchecked: ranges, colors: colors)
     }
 }
-extension IP.Table.SortedArray: Sendable where Color: Sendable {
-}
+extension IP.Table.SortedArray: Sendable where Color: Sendable {}
 extension IP.Table.SortedArray {
     @inlinable func color(containing ip: Bound) -> Color? {
         let index: Int = self.index(containing: ip)
